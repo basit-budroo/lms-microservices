@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert Employee</title>
+</head>
+<body>
+	<h1>Library Management System</h1>
+	<hr>
+
+	<hr>
+	<form action="#" method="post" th:action="@{./addusers}"
+		th:object="${user}">
+		Enter EmployeeId : <input type="text" th:field="*{employeeId}"><br>
+		Enter Email : <input type="text" th:field="*{email}"><br>
+		<br> Create Password : <input type="password" th:field="*{password}"><br>
+		<br> <input type="submit" value="signUp">
+	</form>
+
+	<br>
+	<br>
+
+	<a href="./userLand">Go to Main Page</a>
+</body>
+</html>
