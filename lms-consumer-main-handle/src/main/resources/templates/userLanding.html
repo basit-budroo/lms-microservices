@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+
+<h2 th:text="'Welcome '+${session.user.email}+'!'"></h2>
+<ol>
+    <li><a href="./showBooks">Show All Books</a></li>
+    <li><a href="./inputBookNameForSearch">Search Books By Name</a></li>
+    <li><a href="./issueBookForEmployee">Issue Book*</a></li>
+    <li><a href="./returnBookInput">Return Book</a></li>
+    <li><a href="./checkReturnDateInput">Check Return Date</a></li>
+    <li><a href="">Pay Fine*</a></li>
+    <li><a href="">Logout*</a></li>
+</ol>
+</body>
+</html>
