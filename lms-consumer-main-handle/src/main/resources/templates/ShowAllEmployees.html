@@ -20,10 +20,10 @@
     </tr>
     <tr th:each="employee : ${employeeList}">
         <td th:text="${employee.employeeId}"></td>
-        <td th:text="${employee.empFirstName}"></td>
-        <td th:text="${employee.empLastName}"></td>
-        <td th:text="${employee.designation}"></td>
-        <td th:text="${employee.numberOfBooksIssued}"></td>
+        <td th:text="${employee.employeeFn}"></td>
+        <td th:text="${employee.employeeLn}"></td>
+        <td th:text="${employee.desg}"></td>
+        <td th:text="${employee.booksIssued}"></td>
     </tr>
 </table>
 <br><br>

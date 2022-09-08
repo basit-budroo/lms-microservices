@@ -7,38 +7,27 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
-	@Autowired
-	private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
-	@Override
-	public boolean checkUser(User user) {
-		
-		
-		User obj=restTemplate.getForObject("http://user-service/users/"+user.getEmail()+"/"+user.getPassword(),User.class);
-		
-		if(obj==null) {
-		return false;
-		}
-		return true;
-	}
+    @Override
+    public boolean checkUser(User user) {
+        User obj = restTemplate.getForObject("http://user-service/users/" + user.getEmail() + "/" + user.getPassword(), User.class);
+        if (obj == null) {
+            return false;
+        }
+        return true;
+    }
 
-	@Override
-	public int checkAdmin(User user) {
+    @Override
+    public int checkAdmin(User user) {
+        User obj = restTemplate.getForObject("http://user-service/users/" + user.getEmail() + "/" + user.getPassword(), User.class);
 
-		User obj=restTemplate.getForObject("http://user-service/users/"+user.getEmail()+"/"+user.getPassword(),User.class);
-	
-		return obj.getType();
-	}
+        return obj.getType();
+    }
 
-	@Override
-	public void addUser(User user) {
-		
-		restTemplate.postForObject("http://localhost:8081/addusers", user, User.class);
-		
-		
-	}
-	
-	
-
+    @Override
+    public void addUser(User user) {
+        restTemplate.postForObject("http://localhost:8081/addusers", user, User.class);
+    }
 }

@@ -20,21 +20,19 @@ import com.lms.persistence.TransactionsDao;
 @EntityScan(basePackages = "com.lms.bean")
 @EnableJpaRepositories(basePackages = "com.lms.persistence")
 @EnableEurekaClient
-public class TransactionServiceApplication implements CommandLineRunner {
+public class TransactionServiceApplication {
 	
-	@Autowired
-	private TbrDao tbr;
-	@Autowired
-	private TransactionsDao transaction;
-	
+//	@Autowired
+//	private TbrDao tbr;
+//	@Autowired
+//	private TransactionsDao transaction;
 	public static void main(String[] args) {
 		SpringApplication.run(TransactionServiceApplication.class, args);
 	}
-
-	@Override
-	public void run(String... args) throws Exception {
+//	@Override
+//	public void run(String... args) throws Exception {
 //		tbr.save(new Tbr(111,10002,"2008-11-11","2008-11-17","2022-11-19",0));
 //		transaction.save(new Transactions(2002));
-		
-	}
+//
+//	}
 }

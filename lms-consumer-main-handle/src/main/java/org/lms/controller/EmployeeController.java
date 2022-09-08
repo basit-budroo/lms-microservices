@@ -1,11 +1,7 @@
 package org.lms.controller;
 
-import java.util.List;
-
-
-
-import javax.servlet.http.HttpServletRequest;
-
+import org.lms.bean.Employee;
+import org.lms.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,24 +9,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import org.lms.bean.Employee;
-import org.lms.service.EmployeeService;
+import java.util.List;
 
 @Controller
 public class EmployeeController {
 
-	@Autowired
-	private EmployeeService employeeService;
-	
+    @Autowired
+    private EmployeeService employeeService;
+
     @RequestMapping("/inputEmpIdPageForDelete")
     public ModelAndView inputEmpIdPageForDeleteController() {
-        return new ModelAndView("InputEmployeeIdForDelete","command",new Employee());
+        return new ModelAndView("InputEmployeeIdForDelete", "command", new Employee());
     }
-    
+
     @RequestMapping("/inputEmpIdPageForSearch")
     public ModelAndView inputEmpIdPageForSearchController() {
-        return new ModelAndView("InputEmployeeIdForSearch","command",new Employee());
+        return new ModelAndView("InputEmployeeIdForSearch", "command", new Employee());
     }
 
     @RequestMapping("/deleteEmployee")
@@ -40,8 +34,7 @@ public class EmployeeController {
         String message = "";
         if (employeeService.removeEmployee(employee.getEmployeeId()))
             message = "Employee with ID " + employee.getEmployeeId() + " Deleted !";
-        else
-            message = "Employee with ID " + employee.getEmployeeId() + " Does not exist !";
+        else message = "Employee with ID " + employee.getEmployeeId() + " Does not exist !";
 
         modelAndView.addObject("message", message);
         modelAndView.setViewName("Output");
@@ -55,13 +48,11 @@ public class EmployeeController {
     }
 
     @RequestMapping("/saveEmployee")
-    public ModelAndView saveEmployeeController(@ModelAttribute("emp")Employee employee) {
+    public ModelAndView saveEmployeeController(@ModelAttribute("emp") Employee employee) {
         ModelAndView modelAndView = new ModelAndView();
         String message = null;
-        if (employeeService.addEmployee(employee))
-            message = "Employee Addded Successfully";
-        else
-            message = "Employee Addition Failed";
+        if (employeeService.addEmployee(employee)) message = "Employee Added Successfully";
+        else message = "Employee Addition Failed";
 
         modelAndView.addObject("message", message);
         modelAndView.setViewName("Output");
@@ -89,6 +80,7 @@ public class EmployeeController {
     public ModelAndView showAllEmployeesController() {
 
         List<Employee> employees = employeeService.getAllEmployees();
+
 
         return new ModelAndView("ShowAllEmployees", "employeeList", employees);
 

@@ -11,9 +11,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = "org.lms.persistence")
 @EnableEurekaClient
 public class LmsUserServiceApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(LmsUserServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(LmsUserServiceApplication.class, args);
+    }
 
 }

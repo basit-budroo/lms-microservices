@@ -23,6 +23,4 @@ public class Transactions {
 		super();
 		this.employeeId = employeeId;
 	}
-	
-	
 }
