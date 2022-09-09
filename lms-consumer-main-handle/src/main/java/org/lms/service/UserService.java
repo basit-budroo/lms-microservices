@@ -7,5 +7,5 @@ public interface UserService {
 
 	int checkAdmin(User user);
 
-	void addUser(User user);
+	User addUser(User user);
 }

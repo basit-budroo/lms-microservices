@@ -27,7 +27,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser(User user) {
-        restTemplate.postForObject("http://localhost:8081/addusers", user, User.class);
-    }
+    public User addUser(User user) {
+       
+    	return restTemplate.postForObject("http://user-service/addusers", user, User.class);
+    }   
+      
 }

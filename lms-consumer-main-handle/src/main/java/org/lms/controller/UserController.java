@@ -67,16 +67,33 @@ public class UserController {
     }
     
     @PostMapping(path = "/addusers")
-	public void saveEmployeeResource(@ModelAttribute User user) {
-		userService.addUser(user);
+	public ModelAndView saveUser(@ModelAttribute User user) {
+    	ModelAndView modelAndView=new ModelAndView();
+		
+		
+		if(user.getEmail().length()>0) {
+			
+			userService.addUser(user);
+			modelAndView.addObject("message", "Registration Successfull please log in");
+            modelAndView.addObject("command", new User());
+            modelAndView.setViewName("Login");
+		}else {	
+			modelAndView.addObject("message", "Registration Failed");
+            modelAndView.addObject("command", new User());
+            modelAndView.setViewName("Login");
+		
 	}
+		return modelAndView;
+    }
 	
 	
 
 	@RequestMapping(path = "/logout", produces = MediaType.TEXT_HTML_VALUE)
-	public String thankYou(HttpSession httpSession) {
+	public ModelAndView thankYou(HttpSession httpSession) {
+		  
+		   
 		httpSession.invalidate();
-		return " <h1> Logged out! </h1>";
+		 return new ModelAndView("Login", "command", new User());
 
 	}
 }
